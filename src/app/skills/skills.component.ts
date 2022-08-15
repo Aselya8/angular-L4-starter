@@ -4,14 +4,19 @@ import { Skill } from '../models/skill';
 import { SkillsService } from '../services/skills.service';
 
 @Component({
-  selector: 'app-skills',
-  templateUrl: './skills.component.html',
-  styleUrls: ['./skills.component.css']
+    selector: 'app-skills',
+    templateUrl: './skills.component.html',
+    styleUrls: ['./skills.component.css']
 })
 export class SkillsComponent implements OnInit {
-  skills: Skill[];
+    skills: Skill[];
+    dataService: SkillsService;
 
-  constructor() {}
+    constructor(private skillsService: SkillsService) {
+        this.dataService = skillsService;
+    }
 
-  ngOnInit() {}
+    ngOnInit() {
+        this.skills = this.dataService.skills;
+    }
 }
